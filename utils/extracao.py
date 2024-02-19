@@ -14,5 +14,16 @@ def extrair_dados_produto(url):
         centavos = centavos_existe.text.strip() if centavos_existe else '00'
 
         produtos.append({'nome': nome_produto, 'preco': preco_produto + ',' + centavos})
+        return produtos
 
-    return produtos
+def extrair_dados_varias_paginas(base_url, num_paginas):
+    dados_totais = []
+    for pagina in range(1, num_paginas + 1):
+        if pagina == 1:
+            url = base_url
+        else:
+            url = f"{base_url}_Desde_{(pagina - 1) * 50 + 1}"
+        dados_pagina = extrair_dados_produto(url)
+        dados_totais.extend(dados_pagina)
+    return dados_totais
+
