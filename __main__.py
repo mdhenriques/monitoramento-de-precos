@@ -10,7 +10,7 @@ def main():
 
     df = criar_dataframe(dados_totais)
 
-    nome_arquivo = 'tabvela-produtos'
+    nome_arquivo = 'tabela-produtos'
     salvar_dataframe_excel(df, nome_arquivo)
 
 if __name__ == "__main__":
