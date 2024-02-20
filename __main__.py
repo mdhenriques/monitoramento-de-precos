@@ -6,9 +6,9 @@ def main():
 
     num_paginas = 3
 
-    #dados_totais = extrair_dados_varias_paginas(base_url, num_paginas)
+    dados_totais = extrair_dados_varias_paginas(base_url, num_paginas)
 
-    dados_totais = extrair_dados_produto(base_url)
+    #dados_totais = extrair_dados_produto(base_url)
 
     df = criar_dataframe(dados_totais)
 
