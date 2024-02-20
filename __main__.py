@@ -1,4 +1,4 @@
-from utils.extracao import  extrair_dados_varias_paginas
+from utils.extracao import  extrair_dados_varias_paginas, extrair_dados_produto
 from utils.manipulacao import criar_dataframe, salvar_dataframe_excel
 
 def main():
@@ -6,7 +6,9 @@ def main():
 
     num_paginas = 3
 
-    dados_totais = extrair_dados_varias_paginas(base_url, num_paginas)
+    #dados_totais = extrair_dados_varias_paginas(base_url, num_paginas)
+
+    dados_totais = extrair_dados_produto(base_url)
 
     df = criar_dataframe(dados_totais)
 
