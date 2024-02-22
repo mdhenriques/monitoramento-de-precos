@@ -10,7 +10,8 @@ def main():
 
     #dados_totais = extrair_dados_produto(base_url)
 
-    df = criar_dataframe(dados_totais)
+    filtro = "Fone De Ouvido"
+    df = criar_dataframe(dados_totais, filtro)
 
     nome_arquivo = 'tabela-produtos'
     salvar_dataframe_excel(df, nome_arquivo)
