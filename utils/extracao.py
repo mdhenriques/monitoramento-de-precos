@@ -16,10 +16,12 @@ def extrair_dados_produto(url):
 
         numero_de_avaliacoes_existe = item.find('span', class_='ui-search-reviews__amount')
         numero_de_avaliacoes = numero_de_avaliacoes_existe.text.strip().replace("(", "").replace(")", "") if numero_de_avaliacoes_existe else '0'
-        
 
-        produto = Produto(nome_produto, preco_produto, numero_de_avaliacoes)
-        produtos.append({'nome': produto.nome, 'preco': produto.preco + ',' + centavos, 'numero de avaliacoes': produto.num_avaliacoes})
+        avaliacao_media = item.find('span', class_='ui-search-reviews__rating-number').text.strip() if numero_de_avaliacoes_existe else 'null'        
+
+        produto = Produto(nome_produto, preco_produto, avaliacao_media, numero_de_avaliacoes)
+        
+        produtos.append({'nome': produto.nome, 'preco': produto.preco + ',' + centavos, 'avaliacao media': produto.avaliacao_media, 'numero de avaliacoes': produto.num_avaliacoes})
     
     return produtos
 
