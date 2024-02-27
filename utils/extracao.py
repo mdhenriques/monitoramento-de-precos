@@ -9,13 +9,17 @@ def extrair_dados_produto(url):
     produtos = []
     for item in soup.find_all('li', class_='ui-search-layout__item'):
         nome_produto = item.find('h2', class_='ui-search-item__title').text.strip()
-        preco_produto = item.find('span', class_='andes-money-amount__fraction').text.strip()
 
+        preco_produto = item.find('span', class_='andes-money-amount__fraction').text.strip()
         centavos_existe = item.find('span', class_='andes-money-amount__cents andes-money-amount__cents--superscript-24')
         centavos = centavos_existe.text.strip() if centavos_existe else '00'
 
-        produto = Produto(nome_produto, preco_produto)
-        produtos.append({'nome': produto.nome, 'preco': produto.preco + ',' + centavos})
+        numero_de_avaliacoes_existe = item.find('span', class_='ui-search-reviews__amount')
+        numero_de_avaliacoes = numero_de_avaliacoes_existe.text.strip().replace("(", "").replace(")", "") if numero_de_avaliacoes_existe else '0'
+        
+
+        produto = Produto(nome_produto, preco_produto, numero_de_avaliacoes)
+        produtos.append({'nome': produto.nome, 'preco': produto.preco + ',' + centavos, 'numero de avaliacoes': produto.num_avaliacoes})
     
     return produtos
 
