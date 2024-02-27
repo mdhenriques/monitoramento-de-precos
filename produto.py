@@ -1,5 +1,5 @@
 class Produto:
-    def __init__(self, nome, preco, avaliacao_media, num_avaliacoes):
+    def __init__(self, nome, preco):
         self.nome = nome
         self.preco = preco
 #        self.avaliacao_media = avaliacao_media

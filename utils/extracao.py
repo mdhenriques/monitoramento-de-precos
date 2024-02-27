@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from produto import Produto
 
 def extrair_dados_produto(url):
     response = requests.get(url)
@@ -13,7 +14,8 @@ def extrair_dados_produto(url):
         centavos_existe = item.find('span', class_='andes-money-amount__cents andes-money-amount__cents--superscript-24')
         centavos = centavos_existe.text.strip() if centavos_existe else '00'
 
-        produtos.append({'nome': nome_produto, 'preco': preco_produto + ',' + centavos})
+        produto = Produto(nome_produto, preco_produto)
+        produtos.append(produto)
     
     return produtos
 
