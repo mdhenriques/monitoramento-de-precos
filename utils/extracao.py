@@ -15,7 +15,7 @@ def extrair_dados_produto(url):
         centavos = centavos_existe.text.strip() if centavos_existe else '00'
 
         produto = Produto(nome_produto, preco_produto)
-        produtos.append(produto)
+        produtos.append({'nome': produto.nome, 'preco': produto.preco + ',' + centavos})
     
     return produtos
 
